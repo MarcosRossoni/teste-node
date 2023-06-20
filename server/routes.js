@@ -1,5 +1,8 @@
 const express = require('express')
+const axios = require('axios')
+const {join} = require("path");
 const routes = express.Router()
+const path = require('path')
 
 let db = [
     {'1': {Nome: 'Cliente 1', Idade: '20'}},
@@ -7,17 +10,8 @@ let db = [
     {'3': {Nome: 'Cliente 3', Idade: '20'}},
 ]
 
-routes.get('/', (req, res) => {
-    return res.json(db)
-})
-
-routes.post('/add', (req, res) => {
-    const query = req.query
-
-    console.log(query.imobiliaria)
-    console.log(query.usuario)
-    console.log(query.code)
-    return res.status(200).end()
+routes.get('/teste', (req, res) => {
+    return res.sendFile(path.join(__dirname + '/index.html'))
 })
 
 module.exports = routes
